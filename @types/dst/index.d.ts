@@ -1,5 +1,5 @@
-export declare namespace dst{}
+export declare namespace dst {}
 
-export * from 'dst/mod'
-export * from 'dst/config'
-export * from 'dst/cluster'
+export * from 'dst/mod';
+export * from 'dst/config';
+export * from 'dst/cluster';

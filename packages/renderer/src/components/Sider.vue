@@ -9,20 +9,20 @@
 </template>
 
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router'
-import IconTranslate from '~icons/carbon/translate'
-import IconHome from '~icons/carbon/home'
-import IconModelAlt from '~icons/carbon/model-alt'
-import IconBareMetalServer from '~icons/carbon/bare-metal-server'
-import IconSettings from '~icons/carbon/settings'
+import { RouterLink } from 'vue-router';
+import IconTranslate from '~icons/carbon/translate';
+import IconHome from '~icons/carbon/home';
+import IconModelAlt from '~icons/carbon/model-alt';
+import IconBareMetalServer from '~icons/carbon/bare-metal-server';
+import IconSettings from '~icons/carbon/settings';
 
-defineProps<{ collapsed: Boolean }>()
+defineProps<{ collapsed: Boolean }>();
 
-const { t } = useI18n()
+const { t } = useI18n();
 
-const activeKey = ref<string>('go-mod-home')
+const activeKey = ref<string>('go-mod-home');
 function renderIcon(icon: any) {
-  return () => h(icon)
+  return () => h(icon);
 }
 
 const menuOptions = [
@@ -35,7 +35,7 @@ const menuOptions = [
             path: '/',
           },
         },
-        { default: () => t('menu.home') },
+        { default: () => t('menu.home') }
       ),
     key: 'go-mod-home',
     icon: renderIcon(IconHome),
@@ -49,7 +49,7 @@ const menuOptions = [
             path: '/cluster/list',
           },
         },
-        { default: () => t('breadcrumb.cluster') },
+        { default: () => t('breadcrumb.cluster') }
       ),
     key: 'go-cluster-list',
     icon: renderIcon(IconModelAlt),
@@ -68,7 +68,7 @@ const menuOptions = [
                 path: '/config/server',
               },
             },
-            { default: () => t('menu.server') },
+            { default: () => t('menu.server') }
           ),
         key: 'go-config-server',
         icon: renderIcon(IconBareMetalServer),
@@ -82,7 +82,7 @@ const menuOptions = [
                 path: '/config/server-extra',
               },
             },
-            { default: () => t('menu.server-extra') },
+            { default: () => t('menu.server-extra') }
           ),
         key: 'go-config-server-extra',
         icon: renderIcon(IconBareMetalServer),
@@ -96,12 +96,12 @@ const menuOptions = [
                 path: '/config/translate',
               },
             },
-            { default: () => t('menu.translate') },
+            { default: () => t('menu.translate') }
           ),
         key: 'go-config-translate',
         icon: renderIcon(IconTranslate),
       },
     ],
   },
-]
+];
 </script>

@@ -79,9 +79,9 @@ import {
   NTree,
   NUpload,
   create,
-} from 'naive-ui'
+} from 'naive-ui';
 
-import type { UserModule } from '../types'
+import type { UserModule } from '../types';
 
 export const install: UserModule = ({ app }) => {
   const naive = create({
@@ -166,6 +166,6 @@ export const install: UserModule = ({ app }) => {
       NCollapseItem,
       NEllipsis,
     ],
-  })
-  app.use(naive)
-}
+  });
+  app.use(naive);
+};

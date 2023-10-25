@@ -1,4 +1,4 @@
-const fengari = require('fengari-web')
+import fengari from 'fengari-web';
 
 export default {
   jsonHandle() {
@@ -130,13 +130,13 @@ export default {
       return json
     end
     local json = j()
-    `
+    `;
   },
   runLua(luaScript: string) {
     return fengari.load(`
       ${this.jsonHandle()}
       local locale = "en"
       ${luaScript}
-    `)()
+    `)();
   },
-}
+};

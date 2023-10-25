@@ -1,5 +1,5 @@
-import type { ClusterConfig, ClusterConfigOptions } from 'dst'
-import { ClusterOptionsType } from '../types/dst'
+import { ClusterOptionsType } from '../types/dst';
+import type { ClusterConfig, ClusterConfigOptions } from 'dst';
 
 export const defaultClusterConfig: ClusterConfig = {
   GAMEPLAY: {
@@ -27,7 +27,7 @@ export const defaultClusterConfig: ClusterConfig = {
     master_port: 10888,
     cluster_key: 'defaultPass',
   },
-}
+};
 export const defaultClusterMasterServer: ClusterConfig = {
   NETWORK: {
     server_port: 10999,
@@ -38,7 +38,7 @@ export const defaultClusterMasterServer: ClusterConfig = {
   ACCOUNT: {
     encode_user_path: true,
   },
-}
+};
 export const defaultClusterCavesServer: ClusterConfig = {
   NETWORK: {
     server_port: 10998,
@@ -51,17 +51,13 @@ export const defaultClusterCavesServer: ClusterConfig = {
     master_server_port: 27017,
     authentication_port: 8767,
   },
-}
+};
 
 export const clusterConfigOptions: ClusterConfigOptions = {
   GAMEPLAY: {
     game_mode: {
       type: ClusterOptionsType.SELECT,
-      options: [
-        'survival',
-        'endless',
-        'wilderness',
-      ],
+      options: ['survival', 'endless', 'wilderness'],
     },
     pvp: {
       type: ClusterOptionsType.SWITCH,
@@ -73,12 +69,7 @@ export const clusterConfigOptions: ClusterConfigOptions = {
   NETWORK: {
     cluster_intention: {
       type: ClusterOptionsType.SELECT,
-      options: [
-        'cooperative',
-        'competitive',
-        'social',
-        'madness',
-      ],
+      options: ['cooperative', 'competitive', 'social', 'madness'],
     },
     lan_only_cluster: {
       type: ClusterOptionsType.SWITCH,
@@ -97,7 +88,7 @@ export const clusterConfigOptions: ClusterConfigOptions = {
       type: ClusterOptionsType.SWITCH,
     },
   },
-}
+};
 export const clusterMasterServerOptions: ClusterConfigOptions = {
   SHARD: {
     is_master: {
@@ -109,11 +100,11 @@ export const clusterMasterServerOptions: ClusterConfigOptions = {
       type: ClusterOptionsType.SWITCH,
     },
   },
-}
+};
 export const clusterCavesServerOptions: ClusterConfigOptions = {
   SHARD: {
     is_master: {
       type: ClusterOptionsType.SWITCH,
     },
   },
-}
+};

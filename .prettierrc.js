@@ -2,7 +2,7 @@
 
 module.exports = {
   // 行最大长度
-  printWidth: 100,
+  printWidth: 120,
   // 使用单引号 是
   singleQuote: true,
   // 多行数组是否需要尾部追加逗号 es5 语法需要

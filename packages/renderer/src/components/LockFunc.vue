@@ -1,6 +1,6 @@
 <template>
   <template v-if="!configStore.lockFunc && !modStore.lockModFunc">
-    <slot />
+    <slot></slot>
   </template>
   <n-result
     v-else
@@ -23,17 +23,16 @@
 </template>
 
 <script lang="ts" setup>
-import { useMessage } from 'naive-ui'
-import { useConfigStore } from '../store/config'
-import useConfigFunc from '../hooks/useConfigFunc'
-import { useModStore } from '../store/mod'
+import { useMessage } from 'naive-ui';
+import { useConfigStore } from '../store/config';
+import useConfigFunc from '../hooks/useConfigFunc';
+import { useModStore } from '../store/mod';
 
-const { t } = useI18n()
-const configStore = useConfigStore()
-const modStore = useModStore()
-const message = useMessage()
-const { connectServer } = useConfigFunc()
+const { t } = useI18n();
+const configStore = useConfigStore();
+const modStore = useModStore();
+const message = useMessage();
+const { connectServer } = useConfigFunc();
 
-const refresh = async() => !await connectServer() && message.error('连接服务器失败')
-
+const refresh = async () => !(await connectServer()) && message.error('连接服务器失败');
 </script>

@@ -9,4 +9,4 @@ export enum TranslateBaidu {
 export const translateBaiduOptions = Object.entries(TranslateBaidu).map(([key, value]) => ({
   label: key,
   value,
-}))
+}));

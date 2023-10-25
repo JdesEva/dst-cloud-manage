@@ -9,10 +9,6 @@
   </n-grid>
 </template>
 
-<script lang="ts" setup>
-
-</script>
-
 <style lang="scss" scoped>
 .index-btn-container {
   width: 100%;

@@ -19,5 +19,5 @@
 </template>
 
 <script lang="ts" setup name="default">
-const collapsed = ref(true)
+const collapsed = ref(true);
 </script>

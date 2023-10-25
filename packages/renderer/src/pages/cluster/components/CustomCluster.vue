@@ -1,8 +1,5 @@
 <template>
-  <n-form
-    ref="formRef"
-    label-placement="top"
-  >
+  <n-form ref="formRef" label-placement="top">
     <n-grid :cols="24" :x-gap="24">
       <n-form-item-gi :span="12" label="Input" path="inputValue" />
     </n-grid>
@@ -10,8 +7,7 @@
 </template>
 
 <script lang="ts" setup name="CustomCluster">
-const { t } = useI18n()
+const { t } = useI18n();
 
-defineProps<{ cluster?: string }>()
-
+defineProps<{ cluster?: string }>();
 </script>

@@ -46,53 +46,49 @@
 </template>
 
 <script lang="ts" setup name="CustomCluster">
-import { useDialog, useMessage } from 'naive-ui'
-import { useClusterStore } from '../../../store/cluster'
-import { dialog } from '../../../utils/dialog'
-import CustomCluster from './CustomCluster.vue'
+import { useDialog, useMessage } from 'naive-ui';
+import { useClusterStore } from '../../../store/cluster';
+import { dialog } from '../../../utils/dialog';
+import CustomCluster from './CustomCluster.vue';
 
-defineProps<{ cluster: string }>()
+defineProps<{ cluster: string }>();
 
-const { t } = useI18n()
+const { t } = useI18n();
 
-const router = useRouter()
-const message = useMessage()
-const nDialog = useDialog()
+const router = useRouter();
+const message = useMessage();
+const nDialog = useDialog();
 
-const clusterStore = useClusterStore()
+const clusterStore = useClusterStore();
 // 模组管理
-const toClusterModManage = (cluster: string) => router.push({ path: `/mod/list/${cluster}` })
+const toClusterModManage = (cluster: string) => router.push({ path: `/mod/list/${cluster}` });
 // 删除存档
-const deleteLoading = ref(false)
-const deleteConfirmShow = ref(false)
-const deleteCluster = async(cluster: string) => {
+const deleteLoading = ref(false);
+const deleteConfirmShow = ref(false);
+const deleteCluster = async (cluster: string) => {
   const d = nDialog.success({
     title: t('dialog.confirm-delete'),
     content: t('dialog.confirm-delete-text'),
     positiveText: t('button.confirm'),
     negativeText: t('button.cancel'),
-    onPositiveClick: async() => {
-      d.loading = true
-      const res = await clusterStore.deleteCluster(cluster)
-      if (res)
-        message.success(t('result.delete-cluster'))
-      else
-        message.error(t('result.delete-cluster-fail'))
+    onPositiveClick: async () => {
+      d.loading = true;
+      const res = await clusterStore.deleteCluster(cluster);
+      if (res) message.success(t('result.delete-cluster'));
+      else message.error(t('result.delete-cluster-fail'));
     },
-  })
-}
+  });
+};
 // 备份存档
-const backupCluster = async(cluster: string) => {
+const backupCluster = async (cluster: string) => {
   const res = await dialog.showOpenDialog({
     title: `${t('dialog.backup-cluster')}[${cluster}]`,
     properties: ['openDirectory', 'createDirectory'],
-  })
+  });
   if (!res.canceled) {
     if (await clusterStore.backupCluster(cluster, res.filePaths[0]))
-      message.success(t('result.backup-cluster-success'))
-
-    else
-      message.error(t('result.backup-cluster-fail'))
+      message.success(t('result.backup-cluster-success'));
+    else message.error(t('result.backup-cluster-fail'));
   }
-}
+};
 </script>

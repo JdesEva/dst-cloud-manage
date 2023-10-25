@@ -11,13 +11,13 @@
 </template>
 
 <script setup lang="ts" name="404">
-const router = useRouter()
-const { t } = useI18n()
+const router = useRouter();
+const { t } = useI18n();
 
-const back = () => router.back()
+const back = () => router.back();
 </script>
 
-<style>
+<style lang="scss">
 .result-container {
   display: flex;
   align-items: center;
