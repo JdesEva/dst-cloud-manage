@@ -6,7 +6,9 @@
           {{ t("breadcrumb.home") }}
         </n-breadcrumb-item>
         <n-breadcrumb-item>{{ t("breadcrumb.config") }}</n-breadcrumb-item>
-        <n-breadcrumb-item>{{ t("breadcrumb.server-extra") }}</n-breadcrumb-item>
+        <n-breadcrumb-item>{{
+          t("breadcrumb.server-extra")
+        }}</n-breadcrumb-item>
       </n-breadcrumb>
       <LockFunc>
         <n-card>
@@ -19,11 +21,14 @@
             label-align="left"
             require-mark-placement="right-hanging"
             :style="{
-              maxWidth: '640px'
+              maxWidth: '640px',
             }"
           >
             <n-form-item :label="t('server.setup')" path="setup">
-              <n-input v-model:value="model.setup" :placeholder="t('server.setup-required')" />
+              <n-input
+                v-model:value="model.setup"
+                :placeholder="t('server.setup-required')"
+              />
             </n-form-item>
             <div style="display: flex; justify-content: flex-end;">
               <n-button round type="primary" @click="validateDataSave">
@@ -38,35 +43,34 @@
 </template>
 
 <script lang="ts" setup>
-import { useMessage } from 'naive-ui'
-import type { ServerExtra } from 'dst'
-import { useConfigStore } from '../../store/config'
+import { useMessage } from "naive-ui";
+import type { ServerExtra } from "dst";
+import { useConfigStore } from "../../store/config";
 
-const { t } = useI18n()
-const configStore = useConfigStore()
-const message = useMessage()
+const { t } = useI18n();
+const configStore = useConfigStore();
+const message = useMessage();
 
-const formRef = ref<any>(null)
+const formRef = ref<any>(null);
 
 const model = ref<ServerExtra>({
-  setup: '~/myDSTserver',
+  setup: "~/myDSTserver",
   ...toRaw(configStore.serverExtra),
-})
+});
 const rules = ref({
-  setup: [{ required: true, message: t('server.setup-required') }],
-})
+  setup: [{ required: true, message: t("server.setup-required") }],
+});
 
 const validateDataSave = (e: Event) => {
-  e.preventDefault()
+  e.preventDefault();
   formRef.value.validate((errors: any) => {
     if (!errors) {
-      const val = toRaw(model.value)
-      configStore.updateServerExtra(val)
-      message.success(t('save.success'))
+      const val = toRaw(model.value);
+      configStore.updateServerExtra(val);
+      message.success(t("save.success"));
     }
-  })
-}
-
+  });
+};
 </script>
 
 <style>

@@ -18,6 +18,6 @@
   </n-layout>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="default">
 const collapsed = ref(true)
 </script>

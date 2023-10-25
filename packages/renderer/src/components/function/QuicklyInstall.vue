@@ -132,6 +132,7 @@ const confirm = async() => {
   height: 100%;
   font-size: 24px;
 }
+
 .confirm {
   margin-top:24px
 }

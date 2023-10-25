@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="404">
 const router = useRouter()
 const { t } = useI18n()
 
@@ -18,11 +18,11 @@ const back = () => router.back()
 </script>
 
 <style>
-.result-container{
+.result-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

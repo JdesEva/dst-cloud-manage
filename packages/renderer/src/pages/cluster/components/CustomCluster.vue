@@ -9,7 +9,7 @@
   </n-form>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="CustomCluster">
 const { t } = useI18n()
 
 defineProps<{ cluster?: string }>()

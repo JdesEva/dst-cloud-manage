@@ -13,7 +13,7 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .index-btn-container {
   width: 100%;
   height: calc(50vh - 24px - 12px);

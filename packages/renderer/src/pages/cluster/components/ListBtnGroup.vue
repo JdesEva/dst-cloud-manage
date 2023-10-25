@@ -45,7 +45,7 @@
   />
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="CustomCluster">
 import { useDialog, useMessage } from 'naive-ui'
 import { useClusterStore } from '../../../store/cluster'
 import { dialog } from '../../../utils/dialog'

@@ -49,15 +49,19 @@ const modConfig = cluster?.modConfig || {}
   width: 100%;
 
 }
+
 .steam-desc-container img {
   max-width: 100%;
 }
+
 .mod-list-container {
   min-width: 500px;
 }
+
 .mod-list-container .n-empty {
   margin-top: 20vh;
 }
+
 .n-back-top {
   z-index: 100;
 }

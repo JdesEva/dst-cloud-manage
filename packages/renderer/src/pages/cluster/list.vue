@@ -20,22 +20,42 @@
                 </n-avatar>
               </template>
               <template #header>
-                {{ item.config?.NETWORK?.cluster_name || t('result.empty-cluster-name') }}
+                {{
+                  item.config?.NETWORK?.cluster_name ||
+                  t("result.empty-cluster-name")
+                }}
               </template>
               <template #header-extra>
                 <ListBtnGroup :cluster="item.id" />
               </template>
               <template #description>
-                {{ item.config?.NETWORK?.cluster_description || t('result.empty-cluster-description') }}
+                {{
+                  item.config?.NETWORK?.cluster_description ||
+                  t("result.empty-cluster-description")
+                }}
               </template>
               <n-space>
-                <n-tag v-if="item.config?.GAMEPLAY?.game_mode" size="small" type="success">
-                  {{ t("tag.game-mode") }}: {{ t(`tag.game-mode-${item.config?.GAMEPLAY?.game_mode}`) }}
+                <n-tag
+                  v-if="item.config?.GAMEPLAY?.game_mode"
+                  size="small"
+                  type="success"
+                >
+                  {{ t("tag.game-mode") }}:
+                  {{ t(`tag.game-mode-${item.config?.GAMEPLAY?.game_mode}`) }}
                 </n-tag>
-                <n-tag v-if="item.config?.GAMEPLAY?.max_players" size="small" type="warning">
-                  {{ t("tag.max-players") }}: {{ item.config?.GAMEPLAY?.max_players }}
+                <n-tag
+                  v-if="item.config?.GAMEPLAY?.max_players"
+                  size="small"
+                  type="warning"
+                >
+                  {{ t("tag.max-players") }}:
+                  {{ item.config?.GAMEPLAY?.max_players }}
                 </n-tag>
-                <n-tag v-if="item.config?.GAMEPLAY?.pvp === 'true'" size="small" type="error">
+                <n-tag
+                  v-if="item.config?.GAMEPLAY?.pvp === 'true'"
+                  size="small"
+                  type="error"
+                >
                   {{ t("tag.pvp") }}
                 </n-tag>
               </n-space>
@@ -44,33 +64,36 @@
         </template>
       </n-list>
       <AddCluster />
-      <n-empty v-if="clusterStore.list.length === 0" size="huge" :description="t('result.empty-cluster')" />
+      <n-empty
+        v-if="clusterStore.list.length === 0"
+        size="huge"
+        :description="t('result.empty-cluster')"
+      />
     </LockFunc>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useClusterStore } from "../../store/cluster";
+import ListBtnGroup from "./components/ListBtnGroup.vue";
+import AddCluster from "./components/AddCluster.vue";
 
-import { useClusterStore } from '../../store/cluster'
-import ListBtnGroup from './components/ListBtnGroup.vue'
-import AddCluster from './components/AddCluster.vue'
+const { t } = useI18n();
 
-const { t } = useI18n()
+const clusterStore = useClusterStore();
 
-const clusterStore = useClusterStore()
-
-if (clusterStore.list.length === 0)
-  clusterStore.getClusterList()
+if (clusterStore.list.length === 0) clusterStore.getClusterList();
 </script>
 
-<style>
+<style lang="scss">
 .steam-desc-container {
   width: 100%;
 
+  .n-empty {
+    margin-top: 20vh;
+  }
 }
-.cluster-list-container .n-empty {
-  margin-top: 20vh;
-}
+
 .n-back-top {
   z-index: 100;
 }
