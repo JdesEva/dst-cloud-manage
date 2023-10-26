@@ -1,3 +1,5 @@
+import type { Config } from 'node-ssh';
+
 export interface Translate {
   appid?: string;
   key?: string;

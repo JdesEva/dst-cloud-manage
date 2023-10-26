@@ -1,6 +1,6 @@
 <template>
   <div class="quickly-install">
-    <n-button class="start" :disabled="config.lockFunc" @click="startInstall">
+    <n-button class="start" :disabled="configStore.lockFunc" @click="startInstall">
       <n-space> <carbon:data-share style="font-size: 24px" /> {{ t('button.quickly-install') }} </n-space>
     </n-button>
     <n-drawer :show="percentage > -1" width="100%" placement="left">
@@ -56,7 +56,7 @@ import { sleep } from '../../utils/time';
 const { t } = useI18n();
 const message = useMessage();
 
-const config = useConfigStore();
+const configStore = useConfigStore();
 const percentage = ref<number>(-1);
 const status = ref<QuicklyInstallState>(QuicklyInstallState.PENDING);
 
@@ -64,7 +64,12 @@ const progressText = ref<string>('');
 const progressLog = ref<string>('');
 
 const startInstall = async () => {
-  config.lockFunc = true;
+  if (!configStore.server.host) {
+    message.error(t('alert.no-server'));
+    return;
+  }
+
+  configStore.lockFunc = true;
   status.value = QuicklyInstallState.PENDING;
   percentage.value = 1;
   // 前置操作，不会耗时太久
@@ -132,7 +137,7 @@ const startInstall = async () => {
   percentage.value = 100;
   status.value = QuicklyInstallState.SUCCESS;
   message.success(t('result.quickly-install-success'));
-  config.lockFunc = false;
+  configStore.lockFunc = false;
 };
 
 const confirm = async () => {

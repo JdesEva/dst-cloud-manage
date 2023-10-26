@@ -20,6 +20,11 @@ const modStore = useModStore();
 const loading = ref(false);
 
 const startUpdate = async () => {
+  if (!configStore.server.host) {
+    message.error(t('alert.no-server'));
+    return;
+  }
+
   loading.value = true;
   try {
     await modStore.execSpecialModConfigCluster();
