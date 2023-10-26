@@ -25,11 +25,13 @@ class SSHOperate {
   }
 
   async connect(config: Config) {
+    if (!config.host || !config.username) return;
     const connection = this.getConnection();
     await connection.connect(config);
   }
 
-  static async testConnect(config: Config): Promise<void> {
+  async testConnect(config: Config): Promise<void> {
+    if (!config.host || !config.username) return;
     const tempConnection = new NodeSSH() as NodeSSHType;
     await tempConnection.connect(config);
   }
@@ -120,6 +122,7 @@ class SSHOperate {
 }
 
 const ssh = new SSHOperate();
+
 ipcMain.handle('ssh-operate', async (_event, methodSign: string, ...args: any[]) => {
   if (typeof (ssh as any)[methodSign] === 'function') return (ssh as any)[methodSign](...args);
 

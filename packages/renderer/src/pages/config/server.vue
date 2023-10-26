@@ -120,7 +120,7 @@ const validateServerConnect = (e: Event) => {
 };
 </script>
 
-<style>
+<style lang="scss">
 .server-config-container {
   min-width: 500px;
 }

@@ -25,6 +25,8 @@ async function createWindow() {
     webPreferences: {
       preload: join(__dirname, '../preload/index.cjs'),
     },
+    width: 1024,
+    height: 768,
   });
 
   if (app.isPackaged) {

@@ -28,7 +28,7 @@
     "@vitejs/plugin-vue": "^2.1.0",
     "@vueuse/core": "^7.6.1",
     "commitlint": "^17.7.1",
-    "electron": "^27.0.2",
+    "electron": "16.0.8",
     "electron-builder": "^24.6.4",
     "electron-store": "^8.0.1",
     "eslint": "^8.52.0",
